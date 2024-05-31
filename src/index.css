@@ -13,28 +13,33 @@ body{
   background-color: var(--darkGrey);
   color: var(--white);
 }
+
 main{
   min-height: calc(100dvh - 80px);
   display: flex;
 }
 
-input[type="color"], input[type="text"], input[type="range"] {
+h3{
+  @apply text-2xl font-medium
+}
+
+input[type="color"], input[type="text"], input[type="range"], input[type="number"] {
   appearance: none;
   -moz-appearance: none;
   -webkit-appearance: none;
   background: none;  
 }
 
-input[type="text"] {
+input[type="text"], input[type="number"] {
   border: 1px solid var(--grey);
-  padding: 0 10px;
+  padding: 10px 15px;
   border-radius: 5px;
 }
 
 input[type="range"]::-webkit-slider-thumb {
-  -webkit-appearance: none; /* Override default look */
+  -webkit-appearance: none; 
   appearance: none;
-  margin-top: -4px; /* Centers thumb on the track */
+  margin-top: -4px; 
   background-color: var(--white);
   height: 17px;
   width: 17px;    
@@ -55,8 +60,6 @@ input[type="range"]::-moz-range-track {
   border-radius: 20px
 }
 
-
-
 .btn {
-  @apply px-4 py-2 text-sm bg-white rounded-full text-black w-fit;
+  @apply px-4 py-2 text-sm bg-white rounded-full text-black w-fit font-medium;
 }

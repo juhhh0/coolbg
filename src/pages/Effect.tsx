@@ -2,10 +2,14 @@ import { useState } from "react";
 import { Sketch } from "../sketchs/sketch";
 import Preview from "../components/Effect/Preview";
 import Settings from "../components/Effect/Settings";
-import Input from "../components/inputs/Input";
+import Input from "../components/Input";
 
 export default function Effect() {
-  const [images, setImages] = useState([] as any[]);
+    const [isLoading, setIsLoading] = useState(false);
+
+  const [videoImages, setVideoImages] = useState([] as any[]);
+  const [videoDuration, setVideoDuration] = useState(10);
+
   const [bgColor, setBgColor] = useState("#000000");
   const [textColor, setTextColor] = useState("#ffffff");
   const [text, setText] = useState("juh");
@@ -19,10 +23,12 @@ export default function Effect() {
           objColor={textColor}
           speed={speed}
           text={text}
-          setImages={setImages}
+          setVideoImages={setVideoImages}
+          setIsLoading={setIsLoading}
+          videoDuration={videoDuration}
         />
-        <div className="w-full flex flex-wrap gap-10 items-end xl:items-start py-10">
-          <Settings>
+        <div className="w-full flex flex-col gap-10 xl:items-start py-10">
+          <Settings setVideoDuration={setVideoDuration} videoDuration={videoDuration} isLoading={isLoading}>
             <Input
               type="color"
               label="Background Color"
@@ -46,7 +52,7 @@ export default function Effect() {
               step={0.1}
             />
           </Settings>
-          {images.length > 0 && <Preview images={images} />}
+          {videoImages.length > 0 && <Preview isLoading={isLoading} images={videoImages} setIsLoading={setIsLoading}/>}
         </div>
       </section>
     </>

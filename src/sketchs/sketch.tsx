@@ -8,19 +8,22 @@ type MySketchProps = SketchProps & {
   bgColor: string;
   objColor: string;
   speed: number;
+  videoDuration: number;
 };
 
 function sketch(p5: P5CanvasInstance<MySketchProps>) {
   let uBgColor = "#000000";
   let uObjColor = "#ffffff";
   let uSpeed = 1;
+  let uVideoDuration = 10;
   let string = "ABCDEFGHIJKLMNOPQRSTUVWXYZ123456789@#$%^&*()*&^%";
   let streams: any[] = [];
   let letterSize = 20;
   let letter: any;
   let font: any;
 
-  let setSavesImages = (images: any[]) => {};
+  let setVideoImages = (images: any[]) => {};
+  let setIsLoading = (loading: boolean) => {};
 
   p5.preload = () => {
     font = p5.loadFont("assets/whitrabt.ttf");
@@ -43,8 +46,10 @@ function sketch(p5: P5CanvasInstance<MySketchProps>) {
   p5.updateWithProps = (props: any) => {
     if (props.bgColor) uBgColor = props.bgColor;
     if (props.objColor) uObjColor = props.objColor;
-    if (props.setImages) setSavesImages = props.setImages;
+    if (props.setVideoImages) setVideoImages = props.setVideoImages;
+    if (props.setIsLoading) setIsLoading = props.setIsLoading;
     if (props.text) string = props.text;
+    if (props.videoDuration) uVideoDuration = props.videoDuration;
 
 
     if (props.speed != uSpeed) {
@@ -117,8 +122,9 @@ function sketch(p5: P5CanvasInstance<MySketchProps>) {
   }
 
   p5.saveVideo = () => {
-    p5.saveFrames("frame", "png", 1, 5, (images: any) => {
-      setSavesImages(images);
+    setIsLoading(true);
+    p5.saveFrames("frame", "png", uVideoDuration, 22, (images: any) => {
+      setVideoImages(images);
     });
   };
 
@@ -131,13 +137,17 @@ export function Sketch({
   objColor,
   speed,
   text,
-  setImages,
+  setVideoImages,
+  setIsLoading,
+  videoDuration
 }: {
   bgColor: string;
   objColor: string;
   speed: number;
   text: string;
-  setImages: (images: any[]) => void;
+  setVideoImages: (images: any[]) => void;
+  setIsLoading: (loading: boolean) => void;
+  videoDuration: number;
 }) {
   return (
     <>
@@ -148,7 +158,9 @@ export function Sketch({
           objColor={objColor}
           speed={speed}
           text={text}
-          setImages={setImages}
+          setIsLoading={setIsLoading}
+          setVideoImages={setVideoImages}
+          videoDuration={videoDuration}
         />
       </div>
     </>

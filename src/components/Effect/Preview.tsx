@@ -1,9 +1,9 @@
 import { createFFmpeg } from "@ffmpeg/ffmpeg";
 import { useEffect, useState } from "react";
 
-export default function Preview({ images }: { images: any[] }) {
+export default function Preview({ images, setIsLoading, isLoading }: { images: any[], setIsLoading: any, isLoading: boolean}) {
   const [video, setVideo] = useState("");
-  const ffmpeg = createFFmpeg({ log: true });
+  const ffmpeg = createFFmpeg();
 
   const download = async () => {
     const downloadLink = document.createElement("a");
@@ -20,6 +20,8 @@ export default function Preview({ images }: { images: any[] }) {
         await ffmpeg.load();
       }
 
+      console.log(images.length)
+
       for (let i = 0; i < images.length; i++) {
         const imageData = images[i].imageData.split(",")[1];
         const byteCharacters = atob(imageData);
@@ -34,7 +36,7 @@ export default function Preview({ images }: { images: any[] }) {
 
       await ffmpeg.run(
         "-framerate",
-        "1",
+        "22",
         "-i",
         "image%d.png",
         "-c:v",
@@ -49,11 +51,14 @@ export default function Preview({ images }: { images: any[] }) {
       const videoUrl = URL.createObjectURL(videoBlob);
 
       setVideo(videoUrl);
+      setIsLoading(false);
     };
     createVideo();
   }, [images]);
 
-  return (
+  if(isLoading) return (<></>)
+
+  if (!isLoading) return (
     <div className="flex flex-col gap-4">
       <video className="w-72" controls src={video}></video>
       <button className="btn" onClick={download}>Download</button>
