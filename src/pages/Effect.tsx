@@ -1,31 +1,22 @@
-import React from "react";
 import { useState } from "react";
-import { Sketch } from "../components/sketch";
-import SavedVideo from "../components/SavedVideo";
+import { Sketch } from "../sketchs/sketch";
+import Preview from "../components/Effect/Preview";
+import Settings from "../components/Effect/Settings";
 
 export default function Effect() {
+  const [images, setImages] = useState([] as any[]);
   const [bgColor, setBgColor] = useState("#000000");
   const [objColor, setObjColor] = useState("#ffffff");
-  const [images, setImages] = useState([] as any[]);
+
   return (
     <>
-      <input
-        type="color"
-        onChange={(e) => {
-          // @ts-ignore
-          setBgColor(e.target.value);
-        }}
-      />
-      <input
-        type="color"
-        onChange={(e) => {
-          // @ts-ignore
-          setObjColor(e.target.value);
-        }}
-      />
-      <button id="save-btn">save</button>
-      <Sketch bgColor={bgColor} objColor={objColor} setImages={setImages} />
-      {images.length > 0 && <SavedVideo images={images} />}
+      <section className="w-full flex flex-col gap-10 xl:flex-row h-full px-10 py-8">
+        <Sketch bgColor={bgColor} objColor={objColor} setImages={setImages} />
+        <div>
+          <Settings setBgColor={setBgColor} setObjColor={setObjColor} />
+          {images.length > 0 && <Preview images={images} />}
+        </div>
+      </section>
     </>
   );
 }

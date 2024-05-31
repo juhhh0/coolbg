@@ -12,6 +12,14 @@ body{
   background-color: var(--darkGrey);
   color: var(--white);
 }
+main{
+  min-height: calc(100dvh - 80px);
+  display: flex;
+}
+
+.btn {
+  @apply px-4 py-2 text-sm bg-white rounded-full text-black w-fit;
+}
 
 .container {
   position: relative;

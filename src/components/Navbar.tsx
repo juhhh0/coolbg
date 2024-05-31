@@ -9,7 +9,7 @@ export default function Navbar() {
             <li className="px-3 text-sm">How to use</li>
             <li className="px-3 text-sm">Pricing</li>
         </ul>
-        <a className="px-4 py-2 text-sm bg-white rounded-full text-black" href="">Log In</a>
+        <Link className="btn" to="/login">Log In</Link>
     </nav>
   )
 }

@@ -55,12 +55,14 @@ export function Sketch({
 }) {
   return (
     <>
-      <ReactP5Wrapper
-        sketch={sketch}
-        bgColor={bgColor}
-        objColor={objColor}
-        setImages={setImages}
-      />
+      <div className="bg-black border border-grey w-full xl:!h-[calc(100vh_-_160px)] xl:w-1/2 flex justify-center items-center">
+        <ReactP5Wrapper
+          sketch={sketch}
+          bgColor={bgColor}
+          objColor={objColor}
+          setImages={setImages}
+        />
+      </div>
     </>
   );
 }
