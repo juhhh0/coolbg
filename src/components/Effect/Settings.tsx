@@ -1,6 +1,6 @@
 export default function Settings({ children }: { children: React.ReactNode }) {
   return (
-    <div className="py-10 flex flex-col gap-4">
+    <div className="flex flex-col gap-4 w-full max-w-lg">
       {children}
       <button className="btn" id="save-btn">
         Preview

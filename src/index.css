@@ -5,6 +5,7 @@
 :root{
   --black: rgb(10, 10, 12);
   --darkGrey : rgb(14, 14, 18);
+  --grey: rgb(26, 26, 30);
   --white: rgb(255, 255, 255);
 }
 
@@ -16,6 +17,45 @@ main{
   min-height: calc(100dvh - 80px);
   display: flex;
 }
+
+input[type="color"], input[type="text"], input[type="range"] {
+  appearance: none;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  background: none;  
+}
+
+input[type="text"] {
+  border: 1px solid var(--grey);
+  padding: 0 10px;
+  border-radius: 5px;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none; /* Override default look */
+  appearance: none;
+  margin-top: -4px; /* Centers thumb on the track */
+  background-color: var(--white);
+  height: 17px;
+  width: 17px;    
+  border-radius: 100%;
+}
+
+
+input[type="range"]::-webkit-slider-runnable-track {
+  background: var(--grey);
+  height: 0.5rem;
+  border-radius: 20px
+}
+
+/******** Firefox ********/
+input[type="range"]::-moz-range-track {
+  background: var(--grey);
+  height: 0.5rem;
+  border-radius: 20px
+}
+
+
 
 .btn {
   @apply px-4 py-2 text-sm bg-white rounded-full text-black w-fit;

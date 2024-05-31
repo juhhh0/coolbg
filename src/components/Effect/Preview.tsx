@@ -54,7 +54,7 @@ export default function Preview({ images }: { images: any[] }) {
   }, [images]);
 
   return (
-    <div>
+    <div className="flex flex-col gap-4">
       <video className="w-72" controls src={video}></video>
       <button className="btn" onClick={download}>Download</button>
     </div>

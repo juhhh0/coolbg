@@ -18,11 +18,12 @@ export default function Input({
   step?: number;
 }) {
   return (
-    <div className="flex gap-2">
+    <div className="flex w-full justify-between h-10">
+      <label>{label}</label>
+
       <input
         type={type}
         defaultValue={defaultValue}
-        className="text-black"
         onChange={(e) => {
           // @ts-ignore
           set(e.target.value);
@@ -31,7 +32,6 @@ export default function Input({
         max={max}
         step={step}
       />
-      <label>{label}</label>
     </div>
   );
 }

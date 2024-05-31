@@ -21,7 +21,7 @@ export default function Effect() {
           text={text}
           setImages={setImages}
         />
-        <div>
+        <div className="w-full flex flex-wrap gap-10 items-end xl:items-start py-10">
           <Settings>
             <Input
               type="color"
@@ -41,7 +41,7 @@ export default function Effect() {
               label="Speed"
               set={setSpeed}
               defaultValue="1"
-              min={0}
+              min={0.1}
               max={1}
               step={0.1}
             />
