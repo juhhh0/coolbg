@@ -22,8 +22,8 @@ function sketch(p5: P5CanvasInstance<MySketchProps>) {
   let letter: any;
   let font: any;
 
-  let setVideoImages = (images: any[]) => {};
-  let setIsLoading = (loading: boolean) => {};
+  let setVideoImages: any;
+  let setIsLoading: any;
 
   p5.preload = () => {
     font = p5.loadFont("assets/whitrabt.ttf");
@@ -50,7 +50,6 @@ function sketch(p5: P5CanvasInstance<MySketchProps>) {
     if (props.setIsLoading) setIsLoading = props.setIsLoading;
     if (props.text) string = props.text;
     if (props.videoDuration) uVideoDuration = props.videoDuration;
-
 
     if (props.speed != uSpeed) {
       uSpeed = props.speed;
@@ -139,7 +138,7 @@ export function Sketch({
   text,
   setVideoImages,
   setIsLoading,
-  videoDuration
+  videoDuration,
 }: {
   bgColor: string;
   objColor: string;
