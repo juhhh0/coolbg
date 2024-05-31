@@ -1,0 +1,31 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root{
+  --black: rgb(10, 10, 12);
+  --darkGrey : rgb(14, 14, 18);
+  --white: rgb(255, 255, 255);
+}
+
+body{
+  background-color: var(--darkGrey);
+  color: var(--white);
+}
+
+.container {
+  position: relative;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, 50%);
+  background-color: black;
+  width: 50vw;
+  height: 50vh;
+}
+
+.sketch {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
