@@ -20,20 +20,3 @@ main{
 .btn {
   @apply px-4 py-2 text-sm bg-white rounded-full text-black w-fit;
 }
-
-.container {
-  position: relative;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, 50%);
-  background-color: black;
-  width: 50vw;
-  height: 50vh;
-}
-
-.sketch {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-}
